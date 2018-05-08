@@ -18,6 +18,9 @@ public class SpamFilter {
         }
         else {
 
+            PreProcessor pp = new PreProcessor();
+            pp.distributeDataset("DataSets\\enron1");
+
             BayesianClassifier bc = new BayesianClassifier();
 
             String spamTrainingFolder = args[0];
@@ -29,9 +32,6 @@ public class SpamFilter {
             String hamTestingFolder = args[3];
 
             bc.test(spamTestingFolder, hamTestingFolder);
-
-
-
 
         }
 

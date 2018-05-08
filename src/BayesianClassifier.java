@@ -16,7 +16,6 @@ import java.util.Vector;
  */
 public class BayesianClassifier {
 
-    private final String DATASET = "enron1";
     private final double THRESHOLD = 0.5;
 
     private Hashtable<String, Double> spamicity;
@@ -229,31 +228,15 @@ public class BayesianClassifier {
 
     private double getZaehler(File f) {
         double zaehler = 1.0;
-        try {
-            for (String s : Files.readAllLines(Paths.get(f.getAbsolutePath()))) {
-                for (String word : s.split(" ")) {
-                    Double value = spamicity.get(word);
-                    if (value != null)
-                        zaehler = zaehler * value;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        boolean touched = false;
 
-        return zaehler;
-    }
-
-    private double getNenner(File f) {
-        double zaehler = 1.0;
-        double secondPart = 1.0;
         try {
             for (String s : Files.readAllLines(Paths.get(f.getAbsolutePath()))) {
                 for (String word : s.split(" ")) {
                     Double value = spamicity.get(word);
                     if (value != null) {
                         zaehler = zaehler * value;
-                        secondPart = secondPart * (1 - value);
+                        touched = true;
                     }
                 }
             }
@@ -261,7 +244,36 @@ public class BayesianClassifier {
             e.printStackTrace();
         }
 
-        return zaehler + secondPart;
+        if (touched)
+            return zaehler;
+        else
+            return 0;
+    }
+
+    private double getNenner(File f) {
+        double zaehler = 1.0;
+        double secondPart = 1.0;
+        boolean touched = false;
+
+        try {
+            for (String s : Files.readAllLines(Paths.get(f.getAbsolutePath()))) {
+                for (String word : s.split(" ")) {
+                    Double value = spamicity.get(word);
+                    if (value != null) {
+                        zaehler = zaehler * value;
+                        secondPart = secondPart * (1 - value);
+                        touched = true;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (touched)
+            return zaehler + secondPart;
+        else
+            return 1;
     }
 
 }
