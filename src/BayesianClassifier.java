@@ -16,6 +16,11 @@ import java.util.Vector;
  */
 public class BayesianClassifier {
 
+    private final String DATASET = "enron1";
+    private final double THRESHOLD = 0.5;
+
+    private Hashtable<String, Double> spamicity;
+
 
     public File[] filterFiles(File[] initialFiles) {
 
@@ -58,7 +63,7 @@ public class BayesianClassifier {
                 TODO
              */
 
-            addTotalWordCountToHashtable(f, spamWordsCount);
+//            addTotalWordCountToHashtable(f, spamWordsCount);
             addFileCountToHashtable(f, spamFileCount);
 
             numberOfFiles++;
@@ -78,7 +83,7 @@ public class BayesianClassifier {
                 TODO
              */
 
-            addTotalWordCountToHashtable(f, hamWordsCount);
+//            addTotalWordCountToHashtable(f, hamWordsCount);
             addFileCountToHashtable(f, hamFileCount);
 
             numberOfFiles++;
@@ -86,7 +91,7 @@ public class BayesianClassifier {
         hamRatio_W_H = calculateRatio(hamFileCount, numberOfFiles);
         System.out.println(numberOfFiles + " files found in ham training folder");
 
-        Hashtable<String, Double> spamicity = calculateSpamicity(spamRatio_W_S, hamRatio_W_H);
+        spamicity = calculateSpamicity(spamRatio_W_S, hamRatio_W_H);
         System.out.println(spamicity);
 
         System.out.println(Collections.max(spamicity.values()));
@@ -210,12 +215,53 @@ public class BayesianClassifier {
 
 
     public boolean isSpam(File f) {
-        /*
-        TODO
-        implement method
-        erase the following "return true" statement
-         */
-        return true;
+
+        double zaehler = getZaehler(f);
+        double nenner = getNenner(f);
+
+        double probability = zaehler / nenner;
+
+        if (probability >= THRESHOLD)
+            return true;
+        else
+            return false;
+    }
+
+    private double getZaehler(File f) {
+        double zaehler = 1.0;
+        try {
+            for (String s : Files.readAllLines(Paths.get(f.getAbsolutePath()))) {
+                for (String word : s.split(" ")) {
+                    Double value = spamicity.get(word);
+                    if (value != null)
+                        zaehler = zaehler * value;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return zaehler;
+    }
+
+    private double getNenner(File f) {
+        double zaehler = 1.0;
+        double secondPart = 1.0;
+        try {
+            for (String s : Files.readAllLines(Paths.get(f.getAbsolutePath()))) {
+                for (String word : s.split(" ")) {
+                    Double value = spamicity.get(word);
+                    if (value != null) {
+                        zaehler = zaehler * value;
+                        secondPart = secondPart * (1 - value);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return zaehler + secondPart;
     }
 
 }
