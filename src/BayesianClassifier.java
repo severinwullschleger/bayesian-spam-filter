@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -16,7 +15,8 @@ import java.util.Vector;
  */
 public class BayesianClassifier {
 
-    private final double THRESHOLD = 0.5;
+    private final double SPAMICITY_THRESHOLD = 0.32;
+    private final double THRESHOLD = 0.7;
 
     private Hashtable<String, Double> spamicity;
 
@@ -52,47 +52,37 @@ public class BayesianClassifier {
 
         int numberOfFiles = 0;
         File spamFiles[] = filterFiles(spamTrainingDirectory.listFiles());
-        Hashtable<String, Integer> spamWordsCount = new Hashtable();
+//        Hashtable<String, Integer> spamWordsCount = new Hashtable();
         Hashtable<String, Integer> spamFileCount = new Hashtable();
         Hashtable<String, Double> spamRatio_W_S;
 
-
         for (File f : spamFiles) {
-            /*
-                TODO
-             */
 
-//            addTotalWordCountToHashtable(f, spamWordsCount);
             addFileCountToHashtable(f, spamFileCount);
-
             numberOfFiles++;
-
         }
         spamRatio_W_S = calculateRatio(spamFileCount, numberOfFiles);
-
         System.out.println(numberOfFiles + " files found in spam training folder");
 
         numberOfFiles = 0;
         File hamFiles[] = filterFiles(hamTrainingDirectory.listFiles());
-        Hashtable<String, Integer> hamWordsCount = new Hashtable();
+//        Hashtable<String, Integer> hamWordsCount = new Hashtable();
         Hashtable<String, Integer> hamFileCount = new Hashtable();
         Hashtable<String, Double> hamRatio_W_H;
+
         for (File f : hamFiles) {
-            /*
-                TODO
-             */
 
-//            addTotalWordCountToHashtable(f, hamWordsCount);
             addFileCountToHashtable(f, hamFileCount);
-
             numberOfFiles++;
         }
         hamRatio_W_H = calculateRatio(hamFileCount, numberOfFiles);
         System.out.println(numberOfFiles + " files found in ham training folder");
 
-        spamicity = calculateSpamicity(spamRatio_W_S, hamRatio_W_H);
-        System.out.println(spamicity);
+        Hashtable<String, Double> fullSpamicity = calculateSpamicity(spamRatio_W_S, hamRatio_W_H);
 
+        spamicity = reduceAmountOfWords(fullSpamicity);
+
+        System.out.println(spamicity);
         System.out.println(Collections.max(spamicity.values()));
         System.out.println(Collections.min(spamicity.values()));
         System.out.println(spamicity.values().size());
@@ -133,7 +123,7 @@ public class BayesianClassifier {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -155,15 +145,25 @@ public class BayesianClassifier {
                 double spamicity = (spamRatio_w_s.get(word) * p_s) / (spamRatio_w_s.get(word) * p_s + hamRatio_w_h.get(word) * p_h);
                 spamicity_s_w.put(word, spamicity);
             } else
-                spamicity_s_w.put(word, 1.0);
+                spamicity_s_w.put(word, 0.5);
         }
 
         for (String word : hamRatio_w_h.keySet()) {
             if (spamRatio_w_s.get(word) == null)
-                spamicity_s_w.put(word, 1.0);
+                spamicity_s_w.put(word, 0.5);
         }
 
         return spamicity_s_w;
+    }
+
+    private Hashtable<String, Double> reduceAmountOfWords(Hashtable<String, Double> fullSpamicity) {
+        Hashtable<String, Double> spamicity = new Hashtable<>();
+        for (String word : fullSpamicity.keySet()) {
+            Double value = fullSpamicity.get(word);
+            if (Math.abs(value - 0.5) > SPAMICITY_THRESHOLD)
+                spamicity.put(word, value);
+        }
+        return spamicity;
     }
 
     public void test(String spamTestingFolder, String hamTestingFolder) {
@@ -208,6 +208,9 @@ public class BayesianClassifier {
         System.out.println("###_DO_NOT_USE_THIS_###Ham = " + allHam);
         System.out.println("###_DO_NOT_USE_THIS_###SpamClassifAsHam = " + SpamClassifiedAsHam);
         System.out.println("###_DO_NOT_USE_THIS_###HamClassifAsSpam = " + HamClassifiedAsSpam);
+        System.out.println("###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: " + (Math.round(SpamClassifiedAsHam / (double) allSpam * 10000)) / 100.0 + "%");
+        System.out.println("###_DO_NOT_USE_THIS_###HamClassification ErrorRate: " + (Math.round(HamClassifiedAsSpam / (double) allHam * 10000)) / 100.0 + "%");
+        System.out.println("###_DO_NOT_USE_THIS_###Total ErrorRate: " + (Math.round((SpamClassifiedAsHam + HamClassifiedAsSpam) / (double) (allHam + allSpam) * 10000)) / 100.0 + "%");
 
 
     }
@@ -241,7 +244,7 @@ public class BayesianClassifier {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         if (touched)
@@ -267,7 +270,7 @@ public class BayesianClassifier {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         if (touched)
