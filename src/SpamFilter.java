@@ -15,20 +15,23 @@ public class SpamFilter {
 
         } else {
 
-            PreProcessor pp = new PreProcessor();
-            pp.distributeDataset("DataSets\\enron1");
+            for (int i = 1; i <= 6; i++) {
+                PreProcessor pp = new PreProcessor();
+                pp.distributeDataset("DataSets\\enron" + i);
+                //            pp.distributeDataset(args[4]);
 
-            BayesianClassifier bc = new BayesianClassifier();
+                BayesianClassifier bc = new BayesianClassifier();
 
-            String spamTrainingFolder = args[0];
-            String hamTrainingFolder = args[1];
+                String spamTrainingFolder = args[0];
+                String hamTrainingFolder = args[1];
 
-            bc.train(spamTrainingFolder, hamTrainingFolder);
+                bc.train(spamTrainingFolder, hamTrainingFolder);
 
-            String spamTestingFolder = args[2];
-            String hamTestingFolder = args[3];
+                String spamTestingFolder = args[2];
+                String hamTestingFolder = args[3];
 
-            bc.test(spamTestingFolder, hamTestingFolder);
+                bc.test(spamTestingFolder, hamTestingFolder);
+            }
 
         }
 
