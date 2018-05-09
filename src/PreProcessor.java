@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Random;
 
 public class PreProcessor {
@@ -25,14 +26,24 @@ public class PreProcessor {
         File[] hamFiles = hamDirectory.listFiles();
         File[] spamFiles = spamDirectory.listFiles();
 
+        double spamHamRatio = spamFiles.length / (double) hamFiles.length;   // e.g 1001 / 2898 = 1/3
+
         for (File f : hamFiles) {
             Random rand = new Random();
             float fl = rand.nextFloat();
 
             if (fl < 0.3333)
-                copyFileToPath(f, "HamTestingFolder");
-            else
-                copyFileToPath(f, "HamTrainingFolder");
+                copyFileToPath(f, "HamTestingFolder", 1);
+            else {
+                copyFileToPath(f, "HamTrainingFolder", 1);
+
+                // balance training data
+                if (spamHamRatio > 1) {
+                    Long multiplikator = Math.round(spamHamRatio);
+                    for (int i = 2; i <= multiplikator; i++)
+                        copyFileToPath(f, "HamTrainingFolder", i);
+                }
+            }
         }
 
         for (File f : spamFiles) {
@@ -40,9 +51,26 @@ public class PreProcessor {
             float fl = rand.nextFloat();
 
             if (fl < 0.3333)
-                copyFileToPath(f, "SpamTestingFolder");
-            else
-                copyFileToPath(f, "SpamTrainingFolder");
+                copyFileToPath(f, "SpamTestingFolder", 1);
+            else {
+                copyFileToPath(f, "SpamTrainingFolder", 1);
+
+                // balance training data
+                if (spamHamRatio < 1) {
+                    Long multiplikator = Math.round((1 / spamHamRatio));
+                    for (int i = 2; i <= multiplikator; i++)
+                        copyFileToPath(f, "SpamTrainingFolder", i);
+                }
+            }
+        }
+    }
+
+    private void balance(List<File> files, double ratio) {
+        int filesLength = files.size();
+        Random rand = new Random();
+        for (int i = 0; i < filesLength; i++) {
+            if (rand.nextFloat() > ratio)
+                files.add(files.get(i));
         }
     }
 
@@ -59,9 +87,9 @@ public class PreProcessor {
         }
     }
 
-    public void copyFileToPath(File f, String path) {
+    public void copyFileToPath(File f, String path, int copy) {
         try {
-            Path copied = Paths.get(path + "\\" + f.getName());
+            Path copied = Paths.get(path + "\\" + copy + "_" + f.getName());
             Path originalPath = Paths.get(f.getAbsolutePath());
             Files.copy(originalPath, copied, StandardCopyOption.REPLACE_EXISTING);
 
