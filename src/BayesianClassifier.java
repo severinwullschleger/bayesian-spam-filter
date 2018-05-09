@@ -15,8 +15,8 @@ import java.util.Vector;
  */
 public class BayesianClassifier {
 
-    private final double SPAMICITY_THRESHOLD = 0.32;
-    private final double THRESHOLD = 0.7;
+    private final double SPAMICITY_THRESHOLD = 0.2;
+    private final double THRESHOLD = 0.01;
 
     private Hashtable<String, Double> spamicity;
 
