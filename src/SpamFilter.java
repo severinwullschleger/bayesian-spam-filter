@@ -48,7 +48,7 @@ public class SpamFilter {
             }
 
         } else if (args.length == 5) {
-            /**
+            /*
                 the preprocessor distributes the as fifth argument declared folder
                 the folder must contain a "spam" and s "ham" folder
              */
