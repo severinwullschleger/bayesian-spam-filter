@@ -1,0 +1,252 @@
+"C:\Program Files\Java\jdk1.8.0_162\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.1\lib\idea_rt.jar=55798:C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.1\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_162\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_162\jre\lib\rt.jar;C:\Users\sever\GitHub\PAI_A3\out\production\PAI_A3" SpamFilter SpamTrainingFolder HamTrainingFolder SpamTestingFolder HamTestingFolder
+1032 files found in spam training folder
+2452 files found in ham training folder
+0.9949547294522556
+0.0045746610049328725
+4509
+with threshold 1.0 the training data returns error rate 15.82%
+with threshold 0.95 the training data returns error rate 7.1499999999999995%
+with threshold 0.8999999999999999 the training data returns error rate 7.32%
+with threshold 0.8499999999999999 the training data returns error rate 7.290000000000001%
+with threshold 0.7999999999999998 the training data returns error rate 7.290000000000001%
+with threshold 0.7499999999999998 the training data returns error rate 7.26%
+with threshold 0.6999999999999997 the training data returns error rate 7.35%
+with threshold 0.6499999999999997 the training data returns error rate 7.380000000000001%
+with threshold 0.5999999999999996 the training data returns error rate 7.5200000000000005%
+with threshold 0.5499999999999996 the training data returns error rate 7.580000000000001%
+with threshold 0.4999999999999996 the training data returns error rate 7.66%
+with threshold 0.4499999999999996 the training data returns error rate 7.720000000000001%
+with threshold 0.39999999999999963 the training data returns error rate 7.84%
+with threshold 0.34999999999999964 the training data returns error rate 7.89%
+with threshold 0.29999999999999966 the training data returns error rate 8.04%
+with threshold 0.24999999999999967 the training data returns error rate 8.15%
+with threshold 0.19999999999999968 the training data returns error rate 8.38%
+with threshold 0.1499999999999997 the training data returns error rate 8.52%
+with threshold 0.09999999999999969 the training data returns error rate 8.75%
+with threshold 0.049999999999999684 the training data returns error rate 9.04%
+Testing phase:
+0.95
+###_DO_NOT_USE_THIS_###Spam = 468
+###_DO_NOT_USE_THIS_###Ham = 1220
+###_DO_NOT_USE_THIS_###SpamClassifAsHam = 31
+###_DO_NOT_USE_THIS_###HamClassifAsSpam = 110
+###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: 6.62%
+###_DO_NOT_USE_THIS_###HamClassification ErrorRate: 9.02%
+###_DO_NOT_USE_THIS_###Total ErrorRate: 8.35%
+1002 files found in spam training folder
+2981 files found in ham training folder
+0.9927458589134716
+0.002709578783661812
+3716
+with threshold 1.0 the training data returns error rate 16.07%
+with threshold 0.95 the training data returns error rate 4.590000000000001%
+with threshold 0.8999999999999999 the training data returns error rate 4.52%
+with threshold 0.8499999999999999 the training data returns error rate 4.42%
+with threshold 0.7999999999999998 the training data returns error rate 4.390000000000001%
+with threshold 0.7499999999999998 the training data returns error rate 4.34%
+with threshold 0.6999999999999997 the training data returns error rate 4.2700000000000005%
+with threshold 0.6499999999999997 the training data returns error rate 4.24%
+with threshold 0.5999999999999996 the training data returns error rate 4.24%
+with threshold 0.5499999999999996 the training data returns error rate 4.24%
+with threshold 0.4999999999999996 the training data returns error rate 4.29%
+with threshold 0.4499999999999996 the training data returns error rate 4.29%
+with threshold 0.39999999999999963 the training data returns error rate 4.29%
+with threshold 0.34999999999999964 the training data returns error rate 4.2700000000000005%
+with threshold 0.29999999999999966 the training data returns error rate 4.29%
+with threshold 0.24999999999999967 the training data returns error rate 4.29%
+with threshold 0.19999999999999968 the training data returns error rate 4.22%
+with threshold 0.1499999999999997 the training data returns error rate 4.24%
+with threshold 0.09999999999999969 the training data returns error rate 4.44%
+with threshold 0.049999999999999684 the training data returns error rate 4.590000000000001%
+Testing phase:
+0.19999999999999968
+###_DO_NOT_USE_THIS_###Spam = 494
+###_DO_NOT_USE_THIS_###Ham = 1380
+###_DO_NOT_USE_THIS_###SpamClassifAsHam = 60
+###_DO_NOT_USE_THIS_###HamClassifAsSpam = 14
+###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: 12.15%
+###_DO_NOT_USE_THIS_###HamClassification ErrorRate: 1.01%
+###_DO_NOT_USE_THIS_###Total ErrorRate: 3.95%
+971 files found in spam training folder
+2682 files found in ham training folder
+0.9929511516990556
+0.005904926716821114
+4954
+with threshold 1.0 the training data returns error rate 21.790000000000003%
+with threshold 0.95 the training data returns error rate 9.01%
+with threshold 0.8999999999999999 the training data returns error rate 8.57%
+with threshold 0.8499999999999999 the training data returns error rate 8.6%
+with threshold 0.7999999999999998 the training data returns error rate 8.4%
+with threshold 0.7499999999999998 the training data returns error rate 8.24%
+with threshold 0.6999999999999997 the training data returns error rate 8.16%
+with threshold 0.6499999999999997 the training data returns error rate 8.02%
+with threshold 0.5999999999999996 the training data returns error rate 7.88%
+with threshold 0.5499999999999996 the training data returns error rate 7.86%
+with threshold 0.4999999999999996 the training data returns error rate 7.75%
+with threshold 0.4499999999999996 the training data returns error rate 7.64%
+with threshold 0.39999999999999963 the training data returns error rate 7.5600000000000005%
+with threshold 0.34999999999999964 the training data returns error rate 7.5%
+with threshold 0.29999999999999966 the training data returns error rate 7.470000000000001%
+with threshold 0.24999999999999967 the training data returns error rate 7.470000000000001%
+with threshold 0.19999999999999968 the training data returns error rate 7.42%
+with threshold 0.1499999999999997 the training data returns error rate 7.249999999999999%
+with threshold 0.09999999999999969 the training data returns error rate 7.28%
+with threshold 0.049999999999999684 the training data returns error rate 7.140000000000001%
+with threshold 0.1 the training data returns error rate 7.28%
+with threshold 0.02 the training data returns error rate 7.090000000000001%
+with threshold 0.004 the training data returns error rate 7.31%
+with threshold 8.0E-4 the training data returns error rate 7.64%
+with threshold 1.6E-4 the training data returns error rate 7.86%
+with threshold 3.2000000000000005E-5 the training data returns error rate 8.49%
+with threshold 6.400000000000001E-6 the training data returns error rate 9.06%
+with threshold 1.2800000000000002E-6 the training data returns error rate 9.610000000000001%
+with threshold 2.5600000000000007E-7 the training data returns error rate 10.4%
+with threshold 5.1200000000000015E-8 the training data returns error rate 11.25%
+with threshold 1.0240000000000003E-8 the training data returns error rate 11.959999999999999%
+with threshold 2.0480000000000004E-9 the training data returns error rate 13.28%
+with threshold 4.0960000000000006E-10 the training data returns error rate 14.149999999999999%
+with threshold 8.192000000000001E-11 the training data returns error rate 14.78%
+with threshold 1.6384E-11 the training data returns error rate 15.709999999999999%
+Testing phase:
+0.02
+###_DO_NOT_USE_THIS_###Spam = 529
+###_DO_NOT_USE_THIS_###Ham = 1330
+###_DO_NOT_USE_THIS_###SpamClassifAsHam = 116
+###_DO_NOT_USE_THIS_###HamClassifAsSpam = 13
+###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: 21.93%
+###_DO_NOT_USE_THIS_###HamClassification ErrorRate: 0.98%
+###_DO_NOT_USE_THIS_###Total ErrorRate: 6.94%
+3026 files found in spam training folder
+1022 files found in ham training folder
+0.988825288969312
+6.804632476606579E-4
+2929
+with threshold 1.0 the training data returns error rate 36.51%
+with threshold 0.95 the training data returns error rate 6.52%
+with threshold 0.8999999999999999 the training data returns error rate 5.56%
+with threshold 0.8499999999999999 the training data returns error rate 5.09%
+with threshold 0.7999999999999998 the training data returns error rate 4.97%
+with threshold 0.7499999999999998 the training data returns error rate 4.87%
+with threshold 0.6999999999999997 the training data returns error rate 4.67%
+with threshold 0.6499999999999997 the training data returns error rate 4.590000000000001%
+with threshold 0.5999999999999996 the training data returns error rate 4.55%
+with threshold 0.5499999999999996 the training data returns error rate 4.55%
+with threshold 0.4999999999999996 the training data returns error rate 4.52%
+with threshold 0.4499999999999996 the training data returns error rate 4.45%
+with threshold 0.39999999999999963 the training data returns error rate 4.45%
+with threshold 0.34999999999999964 the training data returns error rate 4.42%
+with threshold 0.29999999999999966 the training data returns error rate 4.45%
+with threshold 0.24999999999999967 the training data returns error rate 4.37%
+with threshold 0.19999999999999968 the training data returns error rate 4.37%
+with threshold 0.1499999999999997 the training data returns error rate 4.42%
+with threshold 0.09999999999999969 the training data returns error rate 4.5%
+with threshold 0.049999999999999684 the training data returns error rate 4.62%
+Testing phase:
+0.24999999999999967
+###_DO_NOT_USE_THIS_###Spam = 1474
+###_DO_NOT_USE_THIS_###Ham = 478
+###_DO_NOT_USE_THIS_###SpamClassifAsHam = 48
+###_DO_NOT_USE_THIS_###HamClassifAsSpam = 26
+###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: 3.26%
+###_DO_NOT_USE_THIS_###HamClassification ErrorRate: 5.44%
+###_DO_NOT_USE_THIS_###Total ErrorRate: 3.79%
+2480 files found in spam training folder
+1013 files found in ham training folder
+0.9871788575224693
+0.0018121224372241792
+3742
+with threshold 1.0 the training data returns error rate 42.309999999999995%
+with threshold 0.95 the training data returns error rate 10.56%
+with threshold 0.8999999999999999 the training data returns error rate 10.08%
+with threshold 0.8499999999999999 the training data returns error rate 9.790000000000001%
+with threshold 0.7999999999999998 the training data returns error rate 9.59%
+with threshold 0.7499999999999998 the training data returns error rate 9.33%
+with threshold 0.6999999999999997 the training data returns error rate 9.3%
+with threshold 0.6499999999999997 the training data returns error rate 9.08%
+with threshold 0.5999999999999996 the training data returns error rate 8.959999999999999%
+with threshold 0.5499999999999996 the training data returns error rate 8.9%
+with threshold 0.4999999999999996 the training data returns error rate 8.870000000000001%
+with threshold 0.4499999999999996 the training data returns error rate 8.76%
+with threshold 0.39999999999999963 the training data returns error rate 8.73%
+with threshold 0.34999999999999964 the training data returns error rate 8.7%
+with threshold 0.29999999999999966 the training data returns error rate 8.59%
+with threshold 0.24999999999999967 the training data returns error rate 8.59%
+with threshold 0.19999999999999968 the training data returns error rate 8.53%
+with threshold 0.1499999999999997 the training data returns error rate 8.39%
+with threshold 0.09999999999999969 the training data returns error rate 8.27%
+with threshold 0.049999999999999684 the training data returns error rate 7.9%
+with threshold 0.1 the training data returns error rate 8.27%
+with threshold 0.02 the training data returns error rate 7.82%
+with threshold 0.004 the training data returns error rate 7.79%
+with threshold 8.0E-4 the training data returns error rate 7.7299999999999995%
+with threshold 1.6E-4 the training data returns error rate 7.870000000000001%
+with threshold 3.2000000000000005E-5 the training data returns error rate 8.129999999999999%
+with threshold 6.400000000000001E-6 the training data returns error rate 8.3%
+with threshold 1.2800000000000002E-6 the training data returns error rate 8.59%
+with threshold 2.5600000000000007E-7 the training data returns error rate 8.85%
+with threshold 5.1200000000000015E-8 the training data returns error rate 9.049999999999999%
+with threshold 1.0240000000000003E-8 the training data returns error rate 9.3%
+with threshold 2.0480000000000004E-9 the training data returns error rate 9.56%
+with threshold 4.0960000000000006E-10 the training data returns error rate 9.99%
+with threshold 8.192000000000001E-11 the training data returns error rate 10.31%
+with threshold 1.6384E-11 the training data returns error rate 10.65%
+Testing phase:
+8.0E-4
+###_DO_NOT_USE_THIS_###Spam = 1195
+###_DO_NOT_USE_THIS_###Ham = 487
+###_DO_NOT_USE_THIS_###SpamClassifAsHam = 130
+###_DO_NOT_USE_THIS_###HamClassifAsSpam = 13
+###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: 10.88%
+###_DO_NOT_USE_THIS_###HamClassification ErrorRate: 2.67%
+###_DO_NOT_USE_THIS_###Total ErrorRate: 8.5%
+2965 files found in spam training folder
+1008 files found in ham training folder
+0.984431854578295
+0.0015570501314533392
+4893
+with threshold 1.0 the training data returns error rate 59.25%
+with threshold 0.95 the training data returns error rate 24.21%
+with threshold 0.8999999999999999 the training data returns error rate 22.8%
+with threshold 0.8499999999999999 the training data returns error rate 22.0%
+with threshold 0.7999999999999998 the training data returns error rate 21.52%
+with threshold 0.7499999999999998 the training data returns error rate 20.94%
+with threshold 0.6999999999999997 the training data returns error rate 20.36%
+with threshold 0.6499999999999997 the training data returns error rate 19.98%
+with threshold 0.5999999999999996 the training data returns error rate 19.41%
+with threshold 0.5499999999999996 the training data returns error rate 18.98%
+with threshold 0.4999999999999996 the training data returns error rate 18.65%
+with threshold 0.4499999999999996 the training data returns error rate 18.2%
+with threshold 0.39999999999999963 the training data returns error rate 17.740000000000002%
+with threshold 0.34999999999999964 the training data returns error rate 17.419999999999998%
+with threshold 0.29999999999999966 the training data returns error rate 17.22%
+with threshold 0.24999999999999967 the training data returns error rate 16.81%
+with threshold 0.19999999999999968 the training data returns error rate 16.39%
+with threshold 0.1499999999999997 the training data returns error rate 15.93%
+with threshold 0.09999999999999969 the training data returns error rate 15.28%
+with threshold 0.049999999999999684 the training data returns error rate 14.6%
+with threshold 0.1 the training data returns error rate 15.28%
+with threshold 0.02 the training data returns error rate 13.52%
+with threshold 0.004 the training data returns error rate 12.709999999999999%
+with threshold 8.0E-4 the training data returns error rate 11.93%
+with threshold 1.6E-4 the training data returns error rate 11.58%
+with threshold 3.2000000000000005E-5 the training data returns error rate 11.4%
+with threshold 6.400000000000001E-6 the training data returns error rate 11.23%
+with threshold 1.2800000000000002E-6 the training data returns error rate 11.33%
+with threshold 2.5600000000000007E-7 the training data returns error rate 11.25%
+with threshold 5.1200000000000015E-8 the training data returns error rate 11.43%
+with threshold 1.0240000000000003E-8 the training data returns error rate 11.48%
+with threshold 2.0480000000000004E-9 the training data returns error rate 11.799999999999999%
+with threshold 4.0960000000000006E-10 the training data returns error rate 12.13%
+with threshold 8.192000000000001E-11 the training data returns error rate 12.23%
+with threshold 1.6384E-11 the training data returns error rate 12.43%
+Testing phase:
+6.400000000000001E-6
+###_DO_NOT_USE_THIS_###Spam = 1535
+###_DO_NOT_USE_THIS_###Ham = 492
+###_DO_NOT_USE_THIS_###SpamClassifAsHam = 194
+###_DO_NOT_USE_THIS_###HamClassifAsSpam = 35
+###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: 12.64%
+###_DO_NOT_USE_THIS_###HamClassification ErrorRate: 7.11%
+###_DO_NOT_USE_THIS_###Total ErrorRate: 11.3%
+
+Process finished with exit code 0
