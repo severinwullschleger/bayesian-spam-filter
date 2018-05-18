@@ -15,16 +15,22 @@ import java.util.Vector;
 public class BayesianClassifier {
 
     /**
-        the threshold which decides if a message is spam or not
-        it is determined from the train data. it is calculated at the end of the train method.
-     */
-    private double THRESHOLD;
-    /**
-        the spamicity threshold defines how many words are kept in the spam lookup table with which
+        the spamicity threshold defines how many words are kept in the spamicity hashtable with which
         the spam probability is calculated
      */
     private final double SPAMICITY_THRESHOLD = 0.2;
 
+    /**
+     the threshold which decides if a message is spam or not
+     it is determined from the train data. it is calculated at the end of the train method.
+     */
+    private double THRESHOLD;
+
+    /**
+     * entries in the spamicity hashtable have the word as a key and as value the probability of an email containing
+     * this word beeing spam
+     * the spamicity hashtable shortened by the reduceAmountOfWords method and the SPAMICITY_THRESHOLD
+     */
     private Hashtable<String, Double> spamicity;
 
     public BayesianClassifier() {
