@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -15,15 +14,21 @@ import java.util.Vector;
  */
 public class BayesianClassifier {
 
-    private final double SPAMICITY_THRESHOLD = 0.2;
+    /**
+        the threshold which decides if a message is spam or not
+        it is determined from the train data. it is calculated at the end of the train method.
+     */
     private double THRESHOLD;
-    private double bestErrorRate;
+    /**
+        the spamicity threshold defines how many words are kept in the spam lookup table with which
+        the spam probability is calculated
+     */
+    private final double SPAMICITY_THRESHOLD = 0.2;
 
     private Hashtable<String, Double> spamicity;
 
     public BayesianClassifier() {
         this.THRESHOLD = 1.0;
-        this.bestErrorRate = 1.0;
     }
 
     public File[] filterFiles(File[] initialFiles) {
@@ -92,9 +97,10 @@ public class BayesianClassifier {
 //        System.out.println(Collections.min(spamicity.values()));
 //        System.out.println(spamicity.values().size());
 
+        double bestErrorRate = 1.0;
         double thres = 1.0;
         while (thres >= 0.0) {
-            double errorRate = getErrorRate(spamFiles,hamFiles, thres);
+            double errorRate = getErrorRate(spamFiles, hamFiles, thres);
             if (errorRate < bestErrorRate) {
                 THRESHOLD = thres;
                 bestErrorRate = errorRate;
@@ -104,7 +110,7 @@ public class BayesianClassifier {
         if (THRESHOLD <= 0.1) {
             thres = 0.1;
             while (thres >= 0.00000000001) {
-                double errorRate = getErrorRate(spamFiles,hamFiles, thres);
+                double errorRate = getErrorRate(spamFiles, hamFiles, thres);
                 if (errorRate < bestErrorRate) {
                     THRESHOLD = thres;
                     bestErrorRate = errorRate;
@@ -115,9 +121,9 @@ public class BayesianClassifier {
         if (THRESHOLD >= 0.9) {
             thres = 0.1;
             while (thres >= 0.00000000001) {
-                double errorRate = getErrorRate(spamFiles,hamFiles, 1-thres);
+                double errorRate = getErrorRate(spamFiles, hamFiles, 1 - thres);
                 if (errorRate < bestErrorRate) {
-                    THRESHOLD = 1-thres;
+                    THRESHOLD = 1 - thres;
                     bestErrorRate = errorRate;
                 }
                 thres = thres / 5;
