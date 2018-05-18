@@ -88,9 +88,9 @@ public class BayesianClassifier {
         spamicity = reduceAmountOfWords(fullSpamicity);
 
 //        System.out.println(spamicity);
-        System.out.println(Collections.max(spamicity.values()));
-        System.out.println(Collections.min(spamicity.values()));
-        System.out.println(spamicity.values().size());
+//        System.out.println(Collections.max(spamicity.values()));
+//        System.out.println(Collections.min(spamicity.values()));
+//        System.out.println(spamicity.values().size());
 
         double thres = 1.0;
         while (thres >= 0.0) {
@@ -145,7 +145,7 @@ public class BayesianClassifier {
         }
 
         double errorRate = (Math.round((SpamClassifiedAsHam + HamClassifiedAsSpam) / (double) (allHam + allSpam) * 10000)) / 10000.0;
-        System.out.println("with threshold " + threshold +" the training data returns error rate " + errorRate * 100.0 + "%" );
+//        System.out.println("with threshold " + threshold +" the training data returns error rate " + errorRate * 100.0 + "%" );
 
         return errorRate;
     }
@@ -277,14 +277,14 @@ public class BayesianClassifier {
 
         }
 
-        System.out.println(THRESHOLD);
+//        System.out.println(THRESHOLD);
         System.out.println("###_DO_NOT_USE_THIS_###Spam = " + allSpam);
         System.out.println("###_DO_NOT_USE_THIS_###Ham = " + allHam);
         System.out.println("###_DO_NOT_USE_THIS_###SpamClassifAsHam = " + SpamClassifiedAsHam);
         System.out.println("###_DO_NOT_USE_THIS_###HamClassifAsSpam = " + HamClassifiedAsSpam);
-        System.out.println("###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: " + (Math.round(SpamClassifiedAsHam / (double) allSpam * 10000)) / 100.0 + "%");
-        System.out.println("###_DO_NOT_USE_THIS_###HamClassification ErrorRate: " + (Math.round(HamClassifiedAsSpam / (double) allHam * 10000)) / 100.0 + "%");
-        System.out.println("###_DO_NOT_USE_THIS_###Total ErrorRate: " + (Math.round((SpamClassifiedAsHam + HamClassifiedAsSpam) / (double) (allHam + allSpam) * 10000)) / 100.0 + "%");
+//        System.out.println("###_DO_NOT_USE_THIS_###SpamClassification ErrorRate: " + (Math.round(SpamClassifiedAsHam / (double) allSpam * 10000)) / 100.0 + "%");
+//        System.out.println("###_DO_NOT_USE_THIS_###HamClassification ErrorRate: " + (Math.round(HamClassifiedAsSpam / (double) allHam * 10000)) / 100.0 + "%");
+//        System.out.println("###_DO_NOT_USE_THIS_###Total ErrorRate: " + (Math.round((SpamClassifiedAsHam + HamClassifiedAsSpam) / (double) (allHam + allSpam) * 10000)) / 100.0 + "%");
 
 
     }
