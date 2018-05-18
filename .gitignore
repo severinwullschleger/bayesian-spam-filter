@@ -24,7 +24,6 @@ hs_err_pid*
 
 out
 DataSets/
-.idea/
 HamTrainingFolder/
 SpamTrainingFolder/
 HamTestingFolder/
