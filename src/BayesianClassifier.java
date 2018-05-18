@@ -112,6 +112,17 @@ public class BayesianClassifier {
                 thres = thres / 5;
             }
         }
+        if (THRESHOLD >= 0.9) {
+            thres = 0.1;
+            while (thres >= 0.00000000001) {
+                double errorRate = getErrorRate(spamFiles,hamFiles, 1-thres);
+                if (errorRate < bestErrorRate) {
+                    THRESHOLD = 1-thres;
+                    bestErrorRate = errorRate;
+                }
+                thres = thres / 5;
+            }
+        }
     }
 
     private double getErrorRate(File[] spamFiles, File[] hamFiles, double threshold) {
