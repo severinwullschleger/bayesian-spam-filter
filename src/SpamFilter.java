@@ -13,10 +13,9 @@ public class SpamFilter {
             System.out.println("Insufficient input arguments. Input format should be:");
             System.out.println("spamTrainingFolder, hamTrainingFolder, spamTestingFolder, hamTestingFolder");
 
-        } else if ((args.length < 5)) {
+        } else if (args.length == 5 && args[4].equals("all")) {
 
             PreProcessor pp = new PreProcessor();
-
             for (int i = 1; i <= 6; i++) {
                 pp.distributeDataset("DataSets\\enron" + i);
 
@@ -33,11 +32,23 @@ public class SpamFilter {
                 bc.test(spamTestingFolder, hamTestingFolder);
             }
 
-        } else {
+        } else if (args.length == 5) {
             PreProcessor pp = new PreProcessor();
-
             pp.distributeDataset(args[4]);
 
+            BayesianClassifier bc = new BayesianClassifier();
+
+            String spamTrainingFolder = args[0];
+            String hamTrainingFolder = args[1];
+
+            bc.train(spamTrainingFolder, hamTrainingFolder);
+
+            String spamTestingFolder = args[2];
+            String hamTestingFolder = args[3];
+
+            bc.test(spamTestingFolder, hamTestingFolder);
+
+        } else {
             BayesianClassifier bc = new BayesianClassifier();
 
             String spamTrainingFolder = args[0];
