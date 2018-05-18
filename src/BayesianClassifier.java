@@ -16,10 +16,15 @@ import java.util.Vector;
 public class BayesianClassifier {
 
     private final double SPAMICITY_THRESHOLD = 0.2;
-    private final double THRESHOLD = 0.01;
+    private double THRESHOLD;
+    private double bestErrorRate;
 
     private Hashtable<String, Double> spamicity;
 
+    public BayesianClassifier() {
+        this.THRESHOLD = 1.0;
+        this.bestErrorRate = 1.0;
+    }
 
     public File[] filterFiles(File[] initialFiles) {
 
@@ -87,6 +92,54 @@ public class BayesianClassifier {
         System.out.println(Collections.min(spamicity.values()));
         System.out.println(spamicity.values().size());
 
+        int thres = 100;
+        while (thres >= 0.0) {
+            double errorRate = getErrorRate(spamFiles,hamFiles, thres/100.0);
+
+            if (errorRate < bestErrorRate) {
+                THRESHOLD = thres/100.0;
+                bestErrorRate = errorRate;
+            }
+
+            thres = thres - 5;
+        }
+    }
+
+    private double getErrorRate(File[] spamFiles, File[] hamFiles, double threshold) {
+        int allSpam = 0;
+        int SpamClassifiedAsHam = 0; //Spams incorrectly classified as Hams
+
+        for (File f : spamFiles) {
+            allSpam++;
+            if (!internalIsSpam(f, threshold))
+                SpamClassifiedAsHam++;
+        }
+
+        int allHam = 0;
+        int HamClassifiedAsSpam = 0; //Hams incorrectly classified as Spams
+
+        for (File f : hamFiles) {
+            allHam++;
+            if (internalIsSpam(f, threshold))
+                HamClassifiedAsSpam++;
+        }
+
+        double errorRate = (Math.round((SpamClassifiedAsHam + HamClassifiedAsSpam) / (double) (allHam + allSpam) * 10000)) / 10000.0;
+        System.out.println("with threshold " + threshold +" the training data returns error rate " + errorRate * 100.0 + "%" );
+
+        return errorRate;
+    }
+
+    private boolean internalIsSpam(File f, double threshold) {
+        double zaehler = getZaehler(f);
+        double nenner = getNenner(f);
+
+        double probability = zaehler / nenner;
+
+        if (probability >= threshold)
+            return true;
+        else
+            return false;
     }
 
     private void addTotalWordCountToHashtable(File f, Hashtable<String, Integer> words) {
@@ -204,6 +257,7 @@ public class BayesianClassifier {
 
         }
 
+        System.out.println(THRESHOLD);
         System.out.println("###_DO_NOT_USE_THIS_###Spam = " + allSpam);
         System.out.println("###_DO_NOT_USE_THIS_###Ham = " + allHam);
         System.out.println("###_DO_NOT_USE_THIS_###SpamClassifAsHam = " + SpamClassifiedAsHam);
