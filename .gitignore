@@ -28,3 +28,4 @@ HamTrainingFolder/
 SpamTrainingFolder/
 HamTestingFolder/
 SpamTestingFolder/
+.idea/workspace.xml
