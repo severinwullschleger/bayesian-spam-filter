@@ -37,12 +37,16 @@ public class PreProcessor {
             else {
                 copyFileToPath(f, "HamTrainingFolder", 1);
 
-                // balance training data
-                if (spamHamRatio > 1) {
-                    Long multiplikator = Math.round(spamHamRatio);
-                    for (int i = 2; i <= multiplikator; i++)
-                        copyFileToPath(f, "HamTrainingFolder", i);
-                }
+                /**
+                Trying to balance the negative and positive example for getting a better learning
+                -> did not improve the learning
+                 **/
+//                // balance training data
+//                if (spamHamRatio > 1) {
+//                    Long multiplikator = Math.round(spamHamRatio);
+//                    for (int i = 2; i <= multiplikator; i++)
+//                        copyFileToPath(f, "HamTrainingFolder", i);
+//                }
             }
         }
 
@@ -55,12 +59,16 @@ public class PreProcessor {
             else {
                 copyFileToPath(f, "SpamTrainingFolder", 1);
 
-                // balance training data
-                if (spamHamRatio < 1) {
-                    Long multiplikator = Math.round((1 / spamHamRatio));
-                    for (int i = 2; i <= multiplikator; i++)
-                        copyFileToPath(f, "SpamTrainingFolder", i);
-                }
+                /**
+                Trying to balance the negative and positive example for getting a better learning
+                -> did not improve the learning
+                 **/
+//                // balance training data
+//                if (spamHamRatio < 1) {
+//                    Long multiplikator = Math.round((1 / spamHamRatio));
+//                    for (int i = 2; i <= multiplikator; i++)
+//                        copyFileToPath(f, "SpamTrainingFolder", i);
+//                }
             }
         }
     }
