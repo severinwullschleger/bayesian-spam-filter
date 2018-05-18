@@ -7,6 +7,21 @@
  */
 public class SpamFilter {
 
+    /**
+     * The SpamFilter program can be run in three different ways:
+     *
+     *  - with four arguments it just takes the data in the specified folders:
+     *      "SpamTrainingFolder" "HamTrainingFolder" "SpamTestingFolder" "HamTestingFolder"
+     *
+     *  - with a fifth argument the folder of the data can be specified. the folder must have to sub folders "ham" and
+     *      "spam" with the emails in it. this mode will automatically distribute (copy) the emails in the training (2/3)
+     *      and testing (1/3)
+     *
+     *  - the third mode is choosen by adding the fifth argument "all": it runs the spam filter process sequentially for
+     *      the 6 enron datasets at the path "DataSets\\enron[1-6]"
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         if ((args.length < 4)) {
@@ -33,6 +48,10 @@ public class SpamFilter {
             }
 
         } else if (args.length == 5) {
+            /*
+                the preprocessor distributes the as fifth argument declared folder
+                the folder must contain a "spam" and s "ham" folder
+             */
             PreProcessor pp = new PreProcessor();
             pp.distributeDataset(args[4]);
 
@@ -49,6 +68,9 @@ public class SpamFilter {
             bc.test(spamTestingFolder, hamTestingFolder);
 
         } else {
+            /**
+                default process which is run when grading
+             */
             BayesianClassifier bc = new BayesianClassifier();
 
             String spamTrainingFolder = args[0];
