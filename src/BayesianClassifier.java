@@ -87,21 +87,30 @@ public class BayesianClassifier {
 
         spamicity = reduceAmountOfWords(fullSpamicity);
 
-        System.out.println(spamicity);
+//        System.out.println(spamicity);
         System.out.println(Collections.max(spamicity.values()));
         System.out.println(Collections.min(spamicity.values()));
         System.out.println(spamicity.values().size());
 
-        int thres = 100;
+        double thres = 1.0;
         while (thres >= 0.0) {
-            double errorRate = getErrorRate(spamFiles,hamFiles, thres/100.0);
-
+            double errorRate = getErrorRate(spamFiles,hamFiles, thres);
             if (errorRate < bestErrorRate) {
-                THRESHOLD = thres/100.0;
+                THRESHOLD = thres;
                 bestErrorRate = errorRate;
             }
-
-            thres = thres - 5;
+            thres = thres - 0.05;
+        }
+        if (THRESHOLD <= 0.1) {
+            thres = 0.1;
+            while (thres >= 0.00000000001) {
+                double errorRate = getErrorRate(spamFiles,hamFiles, thres);
+                if (errorRate < bestErrorRate) {
+                    THRESHOLD = thres;
+                    bestErrorRate = errorRate;
+                }
+                thres = thres / 5;
+            }
         }
     }
 
