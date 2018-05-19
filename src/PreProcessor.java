@@ -9,6 +9,12 @@ import java.util.Random;
 
 public class PreProcessor {
 
+    /**
+     *  distributes the emails from the specifed folder path to the training and test folder with a ratio: 1/3 test and
+     *  2/3 train
+     *
+     * @param dataSetPath which contains the data, the folder needs to have a "ham" and a "spam" directory
+     */
     public void distributeDataset(String dataSetPath) {
         File hamTestingFolder = new File("HamTestingFolder");
         deleteFolder(hamTestingFolder);
@@ -26,6 +32,7 @@ public class PreProcessor {
         File[] hamFiles = hamDirectory.listFiles();
         File[] spamFiles = spamDirectory.listFiles();
 
+        // would be used for balancing the negative and positive classification
         double spamHamRatio = spamFiles.length / (double) hamFiles.length;   // e.g 1001 / 2898 = 1/3
 
         for (File f : hamFiles) {
